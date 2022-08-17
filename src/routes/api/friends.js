@@ -3,7 +3,7 @@ const { createFriend, deleteFriend } = require("../../controllers/friend");
 
 const router = Router();
 
-router.post("/:frinedId", createFriend);
-router.delete("/:frinedId", deleteFriend);
+router.post("/friends/:frinedId", createFriend);
+router.delete("/friends/:frinedId", deleteFriend);
 
 module.exports = router;
