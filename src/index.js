@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
+const connectToDatabase = require("./config/connection");
 
 const connection = require("./config/connection");
 const routes = require("./routes");
@@ -15,7 +16,7 @@ app.use(routes);
 const PORT = process.env.PORT | 4000;
 
 const init = async () => {
-  await connection();
+  await connectToDatabase();
   app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
   });

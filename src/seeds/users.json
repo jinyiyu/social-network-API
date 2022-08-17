@@ -1,0 +1,8 @@
+[
+  {
+    "username": "bob",
+    "email": "bobsmith@gmail.com",
+    "thoughts": "this is an random thoughts",
+    "friends": "alice"
+  }
+]
