@@ -1,0 +1,32 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "An API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "seed": "node src/seeds/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinyiyu/social-network-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jinyiyu/social-network-API/issues"
+  },
+  "homepage": "https://github.com/jinyiyu/social-network-API#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "apollo-server": "^3.10.1",
+    "date-fns": "^2.29.1",
+    "dotenv": "^16.0.1",
+    "graphql": "^16.6.0",
+    "mongoose": "^6.5.2"
+  }
+}
