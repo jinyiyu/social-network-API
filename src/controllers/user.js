@@ -1,6 +1,9 @@
-const getAllUsers = (req, res) => {
+const User = require("../models/User");
+
+const getAllUsers = async (req, res) => {
   try {
-    return res.json("getAllUsers");
+    const users = await User.find({});
+    return res.json({ data: users });
   } catch (error) {
     console.log(`[ERROR]: Failed to get all Users | ${error.message}`);
 
@@ -8,11 +11,21 @@ const getAllUsers = (req, res) => {
   }
 };
 
-const getUserById = (req, res) => {
+const getUserById = async (req, res) => {
   try {
-    return res.json("getUserById");
+    const { id } = req.params;
+
+    const user = await User.findById(id);
+
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "User does not exist" });
+    }
+
+    return res.json({ data: user });
   } catch (error) {
-    console.log(`[ERROR]: Failed to get User | ${error.message}`);
+    console.log(`[ERROR]: Failed to get User by id | ${error.message}`);
 
     return res.status(500).json({ success: false });
   }
