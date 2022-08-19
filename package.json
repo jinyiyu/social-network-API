@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/jinyiyu/social-network-API#readme",
   "devDependencies": {
+    "@faker-js/faker": "^7.4.0",
     "nodemon": "^2.0.19"
   },
   "dependencies": {

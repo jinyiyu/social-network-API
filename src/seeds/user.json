@@ -1,0 +1,26 @@
+[
+  {
+    "username": "bob",
+    "email": "bobsmith@gmail.com",
+    "thoughts": [],
+    "friends": []
+  },
+  {
+    "username": "alice",
+    "email": "alicehaha@gmail.com",
+    "thoughts": [],
+    "friends": []
+  },
+  {
+    "username": "mike",
+    "email": "mike@gmail.com",
+    "thoughts": [],
+    "friends": []
+  },
+  {
+    "username": "chris",
+    "email": "chris@gmail.com",
+    "thoughts": [],
+    "friends": []
+  }
+]
