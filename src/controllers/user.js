@@ -32,7 +32,16 @@ const getUserById = async (req, res) => {
 };
 
 const createUser = (req, res) => {
-  return res.json("createUser");
+  const { username, email } = req.body;
+
+  if (username && email) {
+    User.create({ username, email });
+    return res.json({ success: true });
+  } else {
+    return res
+      .status(404)
+      .json({ message: "Please pass in valid username or email" });
+  }
 };
 
 const updateUser = (req, res) => {
