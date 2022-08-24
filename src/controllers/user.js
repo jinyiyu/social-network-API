@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const { User } = require("../models");
 
 const getAllUsers = async (req, res) => {
   try {
@@ -32,24 +32,66 @@ const getUserById = async (req, res) => {
 };
 
 const createUser = (req, res) => {
-  const { username, email } = req.body;
+  try {
+    const { username, email } = req.body;
 
-  if (username && email) {
-    User.create({ username, email });
-    return res.json({ success: true });
-  } else {
-    return res
-      .status(404)
-      .json({ message: "Please pass in valid username or email" });
+    if (username && email) {
+      User.create({ username, email });
+      return res.json({ success: true });
+    } else {
+      return res
+        .status(404)
+        .json({ message: "Please pass in valid username or email" });
+    }
+  } catch (error) {
+    console.log(`Error: Fail to create User | ${error.message}`);
+    res.status(500).json({ sucess: false, message: error.message });
   }
 };
 
-const updateUser = (req, res) => {
-  return res.json("updateUser");
+const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { username, email } = req.body;
+
+    const updatedUser = await User.findByIdAndUpdate(
+      id,
+      { username, email },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      res.status(404).json({ sucess: false, message: "Cannot find this user" });
+    }
+
+    res.json({ sucess: true, data: updatedUser });
+  } catch (error) {
+    console.log(`Error: Fail to update User | ${error.message}`);
+    res.status(500).json({ sucess: false, message: error.message });
+  }
 };
 
-const deleteUser = (req, res) => {
-  return res.json("deleteUser");
+const deleteUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const targetedUser = await User.findById(id);
+    console.log(targetedUser);
+
+    if (!targetedUser) {
+      res.status(404).json({ sucess: false, message: "Cannot find this user" });
+    }
+
+    await User.deleteOne({ id });
+
+    res.json({
+      sucess: true,
+      message: `User successfully deleted`,
+    });
+  } catch (error) {
+    console.log(`Error: Fail to delete User | ${error.message}`);
+    res.status(500).json({ sucess: false, message: error.message });
+  }
 };
 
 module.exports = {

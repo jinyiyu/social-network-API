@@ -15,7 +15,7 @@ const thoughtSchema = {
     default: Date.now,
     get: (date) => moment(date),
   },
-  Username: {
+  username: {
     type: String,
     required: true,
   },
