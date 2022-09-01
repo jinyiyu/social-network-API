@@ -15,8 +15,21 @@ const createFriend = async (req, res) => {
     return res.status(500).json(`Falied to create friend | ${error.message}`);
   }
 };
-const deleteFriend = (req, res) => {
-  return res.json("deleteFriend");
+
+const deleteFriend = async (req, res) => {
+  // try {
+  //   const { userId, friendId } = req.params;
+  //   if (userId && friendId) {
+  //     await User.findOneAndUpdate(
+  //       { _id: userId },
+  //       { $pull: { friends: friendId } },
+  //       { new: true }
+  //     );
+  //     return res.status(200).json({ success: true });
+  //   }
+  // } catch (error) {
+  //   return res.status(500).json(`Falied to delete friend | ${error.message}`);
+  // }
 };
 
 module.exports = {
